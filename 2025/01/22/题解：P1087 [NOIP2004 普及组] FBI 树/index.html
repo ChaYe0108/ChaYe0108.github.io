@@ -14,7 +14,7 @@
   
 
   
-  <title>题解：P1087 [NOIP2004 普及组] FBI 树 | 茶叶的博客 ChaYe&#39;s blog 3.1</title>
+  <title>题解：P1087 [NOIP2004 普及组] FBI 树 | 茶叶的博客 ChaYe&#39;s blog 3.2</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解：P1087 [NOIP2004 普及组] FBI 树">
 <meta property="og:url" content="https://chaye0108.github.io/2025/01/22/%E9%A2%98%E8%A7%A3%EF%BC%9AP1087%20%5BNOIP2004%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20FBI%20%E6%A0%91/index.html">
-<meta property="og:site_name" content="茶叶的博客 ChaYe&#39;s blog 3.1">
+<meta property="og:site_name" content="茶叶的博客 ChaYe&#39;s blog 3.2">
 <meta property="og:description" content="原题链接 I. 读1. 全 0 串称为 B 串，全 1 串称为 I 串，既含 0 又含 1 的串则称为 F 串 2. T 的根结点为 R，其类型与串 S(输入内容) 的类型相同；3. 若串 S 的长度大于 1，将串 S 从中间分开，分为等长的左右子串 S_1 和 S_2；由左子串 S_1 构造 R 的左子树 T_1，由右子串 S_2 构造 R 的右子树 T_2 4. 请用上述构造方法构造出一棵 F">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-22T06:02:00.000Z">
@@ -55,7 +55,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
       </div>
-      <div>茶叶的博客 ChaYe's blog 3.1 </div>
+      <div>茶叶的博客 ChaYe's blog 3.2 </div>
     </a>
   </nav>
   <nav id="main-nav">
@@ -274,26 +274,21 @@
 </article>
 
 
-
-
-  <script src="https://cdn.staticfile.org/twikoo/1.6.26/twikoo.all.min.js"></script>
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <div id="comment-card" class="comment-card">
     <div class="main-title-bar">
       <div class="main-title-dot"></div>
       <div class="main-title">留言 </div>
     </div>
-    <div id="tcomment"></div>
+    <div id="vcomments"></div>
   </div>
   <script>
-      twikoo.init({
-          envId: '',
-          el: '#tcomment',
-          region: '',
-          path: 'location.pathname',
-          lang: '',
-      })
+      new Valine({"enable":true,"appId":"6997273d705979588e379666","appKey":"78d0b0648e7866f97a9b5aa82a2a255e","placeholder":"Just go go","pageSize":10,"highlight":true,"serverURLs":"https://chaye0108.github.io/","el":"#vcomments"});
   </script>
-  
+
+
+
 
     </div>
     <div id="footer-wrapper">
