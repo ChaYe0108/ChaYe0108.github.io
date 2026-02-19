@@ -14,7 +14,7 @@
   
 
   
-  <title>题解：一本通1356 calc | 茶叶的博客 ChaYe&#39;s blog 3.0</title>
+  <title>题解：一本通1356 calc | 茶叶的博客 ChaYe&#39;s blog 3.1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解：一本通1356 calc">
 <meta property="og:url" content="https://chaye0108.github.io/2024/12/23/%E9%A2%98%E8%A7%A3%EF%BC%9A%E4%B8%80%E6%9C%AC%E9%80%9A1356%20calc/index.html">
-<meta property="og:site_name" content="茶叶的博客 ChaYe&#39;s blog 3.0">
+<meta property="og:site_name" content="茶叶的博客 ChaYe&#39;s blog 3.1">
 <meta property="og:description" content="一本通1356 calc 原题链接 I. 定义变量123456789Tip:建议定义全局变量，可以自动初始化，不用担心之后进行类似“a++”等操作时出问题stack &lt;int&gt; number; &#x2F;&#x2F; 数字栈stack &lt;char&gt; symbol; &#x2F;&#x2F; 符号栈string str; &#x2F;&#x2F; 输入内容int len, num; &#x2F;&#x2F; 输入内容长度以及要入数字栈的数bool fl">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-23T04:00:00.000Z">
@@ -55,7 +55,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
       </div>
-      <div>茶叶的博客 ChaYe's blog 3.0 </div>
+      <div>茶叶的博客 ChaYe's blog 3.1 </div>
     </a>
   </nav>
   <nav id="main-nav">
@@ -189,7 +189,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.4k 词 
+            2.2k 词 
           </div>
         </div>
         
@@ -201,16 +201,16 @@
           <p><a target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1356">一本通1356 calc 原题链接</a></p>
 <h2 id="I-定义变量"><a href="#I-定义变量" class="headerlink" title="I. 定义变量"></a>I. 定义变量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Tip:</span><br><span class="line">建议定义全局变量，可以自动初始化，不用担心之后进行类似“a++”等操作时出问题</span><br><span class="line"></span><br><span class="line">stack &lt;int&gt; number; // 数字栈</span><br><span class="line">stack &lt;char&gt; symbol; // 符号栈</span><br><span class="line"></span><br><span class="line">string str; // 输入内容</span><br><span class="line">int len, num; // 输入内容长度以及要入数字栈的数</span><br><span class="line">bool flag = false; // 是否要将 要入数字栈的数 入栈</span><br></pre></td></tr></table></figure>
 <h2 id="II-读题"><a href="#II-读题" class="headerlink" title="II. 读题"></a>II. 读题</h2><h3 id="提炼有用信息："><a href="#提炼有用信息：" class="headerlink" title="提炼有用信息："></a><em>提炼有用信息：</em></h3><ol>
-<li>“ 方程中只有$‘(’，‘)’，‘0-9’，‘+’，‘-’，‘*’，‘&#x2F;’，‘^’$ ”</li>
+<li>“ 方程中只有$‘(’，‘)’，‘0-9’，‘+’，‘-’，‘*’，‘/’，‘^’$ ”</li>
 </ol>
 <p>很多人会被这一句话和样例误解，以为是只有一位数，最后<strong>惨遭WA</strong>，但其实是有多位数的</p>
-<ol start="2">
+<ol>
 <li>“ 破密了Ferrari设的密码门 ”</li>
 </ol>
 <p><a target="_blank" rel="noopener" href="https://www.gequbao.com/music/18912">Ferrari(music)</a></p>
 <p><strong>(music)I’m a Ferrari~~</strong></p>
 <p><strong>(music)pulled off on Mulholland Drive~~</strong></p>
-<p><strong>(music)Over the city, the lights are so pretty from up here~~~~~~</strong></p>
+<p><strong>(music)Over the city, the lights are so pretty from up here<del>~</del>~</strong></p>
 <h2 id="III-解题思路构思"><a href="#III-解题思路构思" class="headerlink" title="III. 解题思路构思"></a>III. 解题思路构思</h2><p>根据题意+样例，我们得知输入为 <strong>中缀表达式</strong></p>
 <p>所以我们有一下三种解题方式：</p>
 <p><strong>1.中缀转前缀后计算</strong></p>
@@ -224,16 +224,15 @@
 <h3 id="1-首先解决数字的入栈"><a href="#1-首先解决数字的入栈" class="headerlink" title="1 首先解决数字的入栈"></a><em>1 首先解决数字的入栈</em></h3><p>因为数字是多位数，所以我们选择使用一个$int$类型变量$num$用来存储<strong>要入数字栈的数</strong></p>
 <p>当当前字符为数字字符时，将$num$的个位窜到百位，百位窜到千位，以此类推，使用<code>num *= 10</code>就可以轻松实现</p>
 <p>当到达符号字符时说明数字已经结束，这个时候就可以将$num$入栈数字栈</p>
-<p>&#x3D;&#x3D;<strong>但怎么知道有数字要入栈呢？</strong>&#x3D;&#x3D;</p>
-<p>可以定义一个用来判断要不要将变量$num$入栈的$bool$变量：&#x3D;&#x3D;$flag$&#x3D;&#x3D;，在<code>num *= 10</code>的时候将$flag$设为$true$，在入栈后将$flag$设为$false$。这样一来，在到达符号字符时通过判断$flag$的值就可以知道该不该入栈了</p>
-<h3 id="2-符号字符怎么办"><a href="#2-符号字符怎么办" class="headerlink" title="*2 符号字符怎么办"></a>*2 符号字符怎么办</h3><h4 id="a-是’-‘"><a href="#a-是’-‘" class="headerlink" title="*a. 是’(‘"></a>*a. 是’(‘</h4><p>当先遍历到的符号字符为 &#x3D;&#x3D;’(‘&#x3D;&#x3D; 时，直接扔进符号栈就好了</p>
-<h3 id="b-是’-’"><a href="#b-是’-’" class="headerlink" title="*b. 是’)’"></a>*b. 是’)’</h3><p>当当先遍历到的符号字符为 &#x3D;&#x3D;’)’&#x3D;&#x3D; 时</p>
+<p>==<strong>但怎么知道有数字要入栈呢？</strong>==</p>
+<p>可以定义一个用来判断要不要将变量$num$入栈的$bool$变量：==$flag$==，在<code>num *= 10</code>的时候将$flag$设为$true$，在入栈后将$flag$设为$false$。这样一来，在到达符号字符时通过判断$flag$的值就可以知道该不该入栈了</p>
+<h3 id="2-符号字符怎么办"><a href="#2-符号字符怎么办" class="headerlink" title="*2 符号字符怎么办"></a>*2 符号字符怎么办</h3><h4 id="a-是’-‘"><a href="#a-是’-‘" class="headerlink" title="*a. 是’(‘"></a>*a. 是’(‘</h4><p>当先遍历到的符号字符为 ==’(‘== 时，直接扔进符号栈就好了</p>
+<h3 id="b-是’-’"><a href="#b-是’-’" class="headerlink" title="*b. 是’)’"></a>*b. 是’)’</h3><p>当当先遍历到的符号字符为 ==’)’== 时</p>
 <p>因为<strong>括号里的运算等级更高</strong>，所以我们需要在遇到 ‘)’ 时马上计算括号内内容，只要没有到达 <strong>‘(‘</strong> 就一直计算，这个时候就体现出把 ‘(‘ push到符号栈里的作用了，<strong>用来计算括号内内容</strong></p>
 <p><strong>但怎么计算</strong></p>
 <p>这个题目在这一步还是比较友善，因为所有的运算都需要<strong>两个数参与</strong></p>
 <p>所以我们可以先取到数字栈栈顶的两个数和符号栈栈顶的符号进行运算，运算过程直接判断符号运算就好</p>
-<p>如何取栈顶示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int b = number.top(); // 取栈顶</span><br><span class="line">number.pop(); // 出栈顶，这里出栈顶正好对应了我们要实现的计算完成后弹出符号/数字</span><br></pre></td></tr></table></figure>
+<p>如何取栈顶示例：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int b = number.top(); // 取栈顶</span><br><span class="line">number.pop(); // 出栈顶，这里出栈顶正好对应了我们要实现的计算完成后弹出符号/数字</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p><strong><u>因为计算需要反复使用，所以建议打包成函数方便以后使用</u></strong></p>
 <hr>
@@ -243,64 +242,30 @@
 <p><strong>stack: <u>first in last out, last in, first out</u></strong></p>
 <p><strong>Tip2:</strong><br><strong>计算完括号内内容需要将符号栈栈顶出栈，因为此时的栈顶是 ‘(‘ ，如果留着会出大问题……</strong></p>
 <hr>
-<h3 id="c-理清逻辑"><a href="#c-理清逻辑" class="headerlink" title="c. 理清逻辑"></a><em>c. 理清逻辑</em></h3><p>不要觉得普通是普通符号字符就可以直接进入符号栈</p>
-<pre><code>
-因为我们的数学还有优先级概念，所以我们需要先把优先级比当前符号字符高的符号计算完才能让它入栈
-
-## 这里就到了茶叶坐牢的点！
-
-首先我们需要知道**当前符号字符的优先级**和**栈顶符号的优先级**
-
-我们根据尝试定下如下规则：
-
-**BEST level**: 优先级为 $30$ 为最高级，是 ^(阶乘)
-
-**MIDDLE level**: 优先级为 $20$ 为中间级，是 $*$ 和 $/$
-
-**WORST level**: 优先级为 $10$ 为最拉级，是 $+$ 和 $-$
-
-现在就可以通过战力值(优先级)来评定谁强谁拉了
-
-**因为要重复使用，建议定义为一个函数**
-
-**怎么真正实施计算呢？**
-
-~~直接调用已经写好的计算函数啊！~~
-
-计算战力值比当前符号字符高的强者拢共分三↑步
-
-#### *① 比较优先级*
-
-只要调用写好的函数就可以获得符号栈栈顶符号的优先级与当前符号字符的优先级，获得之后作比较就好力
-
-****
-
-**Tip:**
-**记得用$while$，因为可能不止一个符号的优先级比当前符号的高**
-
-****
-
-#### *② 预防 $return$ $value$ $3221225477$ *
-因为我们的计算函数中绝对会使用`栈名.pop()`，所以必须在外围的$while$循环中加入条件：`!symbol.empty()`
-
-巧妙的是数字栈并不用担心这一点，因为从题意就可以得出**数字的个数绝对比符号的个数多，所以只要符号还有东西就一定有数字参加运算给你`pop`**
-
-并且不用担心如果全是括号那数字不就比符号少了，因为我们前面已经筛掉了是括号的可能
-
-### *d. 结束*
-
-因为可能有些刁钻的测试样例会在所有运算结束后留下数字
-
-所以需要在最后判断一下$flag$变量，如果$flag$变量为$true$，说明还有数残留，所以要把$num$入栈数字栈
-
-因为刚刚可能有数字残留，但数字是要用来计算的，计算又是成双成对的，所以我们需要重新计算一下，但是并没有上面那么复杂，只要`while(!symbol.empty())`就好了，如果达成条件就调用计算函数就好了
-
-最后输出`number.top()`，因为计算函数会将计算的值入栈数字栈，所以在最结尾时，`number.top()`就是结果
-
-# 总结
-# 自己理清思路后把所有写上就能AC
-</code></pre>
-
+<h3 id="c-理清逻辑"><a href="#c-理清逻辑" class="headerlink" title="c. 理清逻辑"></a><em>c. 理清逻辑</em></h3><p>不要觉得普通是普通符号字符就可以直接进入符号栈<br>```</p>
+<p>因为我们的数学还有优先级概念，所以我们需要先把优先级比当前符号字符高的符号计算完才能让它入栈</p>
+<h2 id="这里就到了茶叶坐牢的点！"><a href="#这里就到了茶叶坐牢的点！" class="headerlink" title="这里就到了茶叶坐牢的点！"></a>这里就到了茶叶坐牢的点！</h2><p>首先我们需要知道<strong>当前符号字符的优先级</strong>和<strong>栈顶符号的优先级</strong></p>
+<p>我们根据尝试定下如下规则：</p>
+<p><strong>BEST level</strong>: 优先级为 $30$ 为最高级，是 ^(阶乘)</p>
+<p><strong>MIDDLE level</strong>: 优先级为 $20$ 为中间级，是 $*$ 和 $/$</p>
+<p><strong>WORST level</strong>: 优先级为 $10$ 为最拉级，是 $+$ 和 $-$</p>
+<p>现在就可以通过战力值(优先级)来评定谁强谁拉了</p>
+<p><strong>因为要重复使用，建议定义为一个函数</strong></p>
+<p><strong>怎么真正实施计算呢？</strong></p>
+<p><del>直接调用已经写好的计算函数啊！</del></p>
+<p>计算战力值比当前符号字符高的强者拢共分三↑步</p>
+<h4 id="①-比较优先级"><a href="#①-比较优先级" class="headerlink" title="① 比较优先级"></a><em>① 比较优先级</em></h4><p>只要调用写好的函数就可以获得符号栈栈顶符号的优先级与当前符号字符的优先级，获得之后作比较就好力</p>
+<hr>
+<p><strong>Tip:</strong><br><strong>记得用$while$，因为可能不止一个符号的优先级比当前符号的高</strong></p>
+<hr>
+<h4 id="②-预防-return-value-3221225477"><a href="#②-预防-return-value-3221225477" class="headerlink" title="② 预防 $return$ $value$ $3221225477$ "></a><em>② 预防 $return$ $value$ $3221225477$ </em></h4><p>因为我们的计算函数中绝对会使用<code>栈名.pop()</code>，所以必须在外围的$while$循环中加入条件：<code>!symbol.empty()</code></p>
+<p>巧妙的是数字栈并不用担心这一点，因为从题意就可以得出<strong>数字的个数绝对比符号的个数多，所以只要符号还有东西就一定有数字参加运算给你<code>pop</code></strong></p>
+<p>并且不用担心如果全是括号那数字不就比符号少了，因为我们前面已经筛掉了是括号的可能</p>
+<h3 id="d-结束"><a href="#d-结束" class="headerlink" title="d. 结束"></a><em>d. 结束</em></h3><p>因为可能有些刁钻的测试样例会在所有运算结束后留下数字</p>
+<p>所以需要在最后判断一下$flag$变量，如果$flag$变量为$true$，说明还有数残留，所以要把$num$入栈数字栈</p>
+<p>因为刚刚可能有数字残留，但数字是要用来计算的，计算又是成双成对的，所以我们需要重新计算一下，但是并没有上面那么复杂，只要<code>while(!symbol.empty())</code>就好了，如果达成条件就调用计算函数就好了</p>
+<p>最后输出<code>number.top()</code>，因为计算函数会将计算的值入栈数字栈，所以在最结尾时，<code>number.top()</code>就是结果</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h1 id="自己理清思路后把所有写上就能AC"><a href="#自己理清思路后把所有写上就能AC" class="headerlink" title="自己理清思路后把所有写上就能AC"></a>自己理清思路后把所有写上就能AC</h1>
         
       </div>
 
