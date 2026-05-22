@@ -1,220 +1,305 @@
+
+
 <!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
-<html theme="dark" showBanner="true" hasBanner="false" > 
-<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
-<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
-<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
-<script src="/js/color.global.min.js" ></script>
-<script src="/js/load-settings.js" ></script>
+
 <head>
-  <meta charset="utf-8">
-  
-  
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
   
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>题解：一本通1356 calc | 茶叶的博客 ChaYe&#39;s blog 3.1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-
-  <meta name="description" content="一本通1356 calc 原题链接 I. 定义变量123456789Tip:建议定义全局变量，可以自动初始化，不用担心之后进行类似“a++”等操作时出问题stack &lt;int&gt; number; &#x2F;&#x2F; 数字栈stack &lt;char&gt; symbol; &#x2F;&#x2F; 符号栈string str; &#x2F;&#x2F; 输入内容int len, num; &#x2F;&#x2F; 输入内容长度以及要入数字栈的数bool fl">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="茶叶 ChaYe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一本通1356 calc 原题链接 I. 定义变量123456789Tip:建议定义全局变量，可以自动初始化，不用担心之后进行类似“a++”等操作时出问题stack &lt;int&gt; number; &#x2F;&#x2F; 数字栈stack &lt;char&gt; symbol; &#x2F;&#x2F; 符号栈string str; &#x2F;&#x2F; 输入内容int len, num; &#x2F;&#x2F; 输入内容长度以及要入数字栈的数bool fl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解：一本通1356 calc">
 <meta property="og:url" content="https://chaye0108.github.io/2024/12/23/%E9%A2%98%E8%A7%A3%EF%BC%9A%E4%B8%80%E6%9C%AC%E9%80%9A1356%20calc/index.html">
-<meta property="og:site_name" content="茶叶的博客 ChaYe&#39;s blog 3.1">
+<meta property="og:site_name" content="茶叶的博客 ChaYe&#39;s blog 1.0">
 <meta property="og:description" content="一本通1356 calc 原题链接 I. 定义变量123456789Tip:建议定义全局变量，可以自动初始化，不用担心之后进行类似“a++”等操作时出问题stack &lt;int&gt; number; &#x2F;&#x2F; 数字栈stack &lt;char&gt; symbol; &#x2F;&#x2F; 符号栈string str; &#x2F;&#x2F; 输入内容int len, num; &#x2F;&#x2F; 输入内容长度以及要入数字栈的数bool fl">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-23T04:00:00.000Z">
 <meta property="article:modified_time" content="2026-03-29T16:18:29.681Z">
 <meta property="article:author" content="茶叶 ChaYe">
 <meta property="article:tag" content="题解">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="shortcut icon" href="https://cdn.luogu.com.cn/upload/image_hosting/iueog17x.png">
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <title>题解：一本通1356 calc - 茶叶的博客 ChaYe&#39;s blog 1.0</title>
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chaye0108.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 8.1.1"></head>
+
 
 <body>
   
-   
-  <div id="main-grid" class="  ">
-    <div id="nav" class=""  >
-      <navbar id="navbar">
-  <nav id="title-nav">
-    <a href="/">
-      <div id="vivia-logo">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-      <div>茶叶的博客 ChaYe's blog 3.1 </div>
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>茶叶的博客 ChaYe&#39;s blog 1.0</strong>
     </a>
-  </nav>
-  <nav id="main-nav">
-    
-      <a class="main-nav-link" href="/">主页</a>
-    
-      <a class="main-nav-link" href="/microblog">只是几句话</a>
-    
-      <a class="main-nav-link" href="/archives">归档</a>
-    
-      <a class="main-nav-link" href="/share">分享</a>
-    
-      <a class="main-nav-link" href="/about">关于</a>
-    
-  </nav>
-  <nav id="sub-nav">
-    <a id="theme-btn" class="nav-icon">
-      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
-      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
-    </a>
-    
-    <div id="nav-menu-btn" class="nav-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
-    </div>
-  </nav>
-</navbar>
-<div id="nav-dropdown" class="hidden">
-  <div id="dropdown-link-list">
-    
-      <a class="nav-dropdown-link" href="/">主页</a>
-    
-      <a class="nav-dropdown-link" href="/microblog">只是几句话</a>
-    
-      <a class="nav-dropdown-link" href="/archives">归档</a>
-    
-      <a class="nav-dropdown-link" href="/share">分享</a>
-    
-      <a class="nav-dropdown-link" href="/about">关于</a>
-    
-     
-    </div>
-</div>
-<script>
-  let dropdownBtn = document.getElementById("nav-menu-btn");
-  let dropdownEle = document.getElementById("nav-dropdown");
-  dropdownBtn.onclick = function() {
-    dropdownEle.classList.toggle("hidden");
-  }
-</script>
-    </div>
-    <div id="sidebar-wrapper">
-      <sidebar id="sidebar">
-  
-    <div class="widget-wrap">
-  <div class="info-card">
-    <div class="avatar">
-      
-        <image src=https://cdn.luogu.com.cn/upload/image_hosting/iueog17x.png></image>
-      
-      <div class="img-dim"></div>
-    </div>
-    <div class="info">
-      <div class="username">茶叶 </div>
-      <div class="dot"></div>
-      <div class="subtitle">期待明天发生美好 </div>
-      <div class="link-list">
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="link-btn" href="https://chaye0108.github.io/" title="邮箱 moneies123@outlook.com"><i class="fa-solid fa-envelope"></i></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="link-btn" href="https://chaye0108.github.io/" title="微信号 ChaYe_0108"><i class="fa-regular fa-comment"></i></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-          <a class="link-btn" href="https://chaye0108.github.io/" title="QQ号 3553793120"><i class="fa-brands fa-qq"></i></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
         
-          <a class="link-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/2117065552?spm_id_from=333.1007.0.0" title="Bilibili"><i class="fa-brands fa-bilibili"></i></a>
-         
-      </div>  
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-</div>
+</nav>
 
   
-  <div class="sticky">
-    
-      
 
-
-
-    
-      
-  <div class="widget-wrap">
-    <div class="widget">
-      <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/" rel="tag">休闲娱乐</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA/" rel="tag">算法理论</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
-    </div>
-  </div>
-
-
-    
-  </div>
-</sidebar>
-    </div>
-    <div id="content-body">
-       
-
-
-<article id="post-题解：一本通1356 calc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-    
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 class="p-name article-title" itemprop="headline name">
-        题解：一本通1356 calc
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-12-23T04:00:00.000Z" itemprop="datePublished">2024-12-23</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    未分类 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.4k 词 
-          </div>
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/background.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="题解：一本通1356 calc"></span>
+          
         </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
 
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
         
-          <p><a target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1356">一本通1356 calc 原题链接</a></p>
-<h2 id="I-定义变量"><a href="#I-定义变量" class="headerlink" title="I. 定义变量"></a>I. 定义变量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Tip:</span><br><span class="line">建议定义全局变量，可以自动初始化，不用担心之后进行类似“a++”等操作时出问题</span><br><span class="line"></span><br><span class="line">stack &lt;int&gt; number; // 数字栈</span><br><span class="line">stack &lt;char&gt; symbol; // 符号栈</span><br><span class="line"></span><br><span class="line">string str; // 输入内容</span><br><span class="line">int len, num; // 输入内容长度以及要入数字栈的数</span><br><span class="line">bool flag = false; // 是否要将 要入数字栈的数 入栈</span><br></pre></td></tr></table></figure>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-23 12:00" pubdate>
+          2024年12月23日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">题解：一本通1356 calc</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><a target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1356">一本通1356 calc 原题链接</a></p>
+<h2 id="I-定义变量"><a href="#I-定义变量" class="headerlink" title="I. 定义变量"></a>I. 定义变量</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Tip:<br>建议定义全局变量，可以自动初始化，不用担心之后进行类似“a++”等操作时出问题<br><br>stack &lt;<span class="hljs-type">int</span>&gt; number; <span class="hljs-comment">// 数字栈</span><br>stack &lt;<span class="hljs-type">char</span>&gt; symbol; <span class="hljs-comment">// 符号栈</span><br><br>string str; <span class="hljs-comment">// 输入内容</span><br><span class="hljs-type">int</span> len, num; <span class="hljs-comment">// 输入内容长度以及要入数字栈的数</span><br><span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 是否要将 要入数字栈的数 入栈</span><br></code></pre></td></tr></table></figure>
 <h2 id="II-读题"><a href="#II-读题" class="headerlink" title="II. 读题"></a>II. 读题</h2><h3 id="提炼有用信息："><a href="#提炼有用信息：" class="headerlink" title="提炼有用信息："></a><em>提炼有用信息：</em></h3><ol>
-<li>“ 方程中只有$‘(’，‘)’，‘0-9’，‘+’，‘-’，‘*’，‘&#x2F;’，‘^’$ ”</li>
+<li>“ 方程中只有$‘(’，‘)’，‘0-9’，‘+’，‘-’，‘*’，‘/’，‘^’$ ”</li>
 </ol>
 <p>很多人会被这一句话和样例误解，以为是只有一位数，最后<strong>惨遭WA</strong>，但其实是有多位数的</p>
-<ol start="2">
+<ol>
 <li>“ 破密了Ferrari设的密码门 ”</li>
 </ol>
 <p><a target="_blank" rel="noopener" href="https://www.gequbao.com/music/18912">Ferrari(music)</a></p>
 <p><strong>(music)I’m a Ferrari~~</strong></p>
 <p><strong>(music)pulled off on Mulholland Drive~~</strong></p>
-<p><strong>(music)Over the city, the lights are so pretty from up here~~~~~~</strong></p>
+<p><strong>(music)Over the city, the lights are so pretty from up here<del>~</del>~</strong></p>
 <h2 id="III-解题思路构思"><a href="#III-解题思路构思" class="headerlink" title="III. 解题思路构思"></a>III. 解题思路构思</h2><p>根据题意+样例，我们得知输入为 <strong>中缀表达式</strong></p>
 <p>所以我们有一下三种解题方式：</p>
 <p><strong>1.中缀转前缀后计算</strong></p>
@@ -228,16 +313,15 @@
 <h3 id="1-首先解决数字的入栈"><a href="#1-首先解决数字的入栈" class="headerlink" title="1 首先解决数字的入栈"></a><em>1 首先解决数字的入栈</em></h3><p>因为数字是多位数，所以我们选择使用一个$int$类型变量$num$用来存储<strong>要入数字栈的数</strong></p>
 <p>当当前字符为数字字符时，将$num$的个位窜到百位，百位窜到千位，以此类推，使用<code>num *= 10</code>就可以轻松实现</p>
 <p>当到达符号字符时说明数字已经结束，这个时候就可以将$num$入栈数字栈</p>
-<p>&#x3D;&#x3D;<strong>但怎么知道有数字要入栈呢？</strong>&#x3D;&#x3D;</p>
-<p>可以定义一个用来判断要不要将变量$num$入栈的$bool$变量：&#x3D;&#x3D;$flag$&#x3D;&#x3D;，在<code>num *= 10</code>的时候将$flag$设为$true$，在入栈后将$flag$设为$false$。这样一来，在到达符号字符时通过判断$flag$的值就可以知道该不该入栈了</p>
-<h3 id="2-符号字符怎么办"><a href="#2-符号字符怎么办" class="headerlink" title="*2 符号字符怎么办"></a>*2 符号字符怎么办</h3><h4 id="a-是’-‘"><a href="#a-是’-‘" class="headerlink" title="*a. 是’(‘"></a>*a. 是’(‘</h4><p>当先遍历到的符号字符为 &#x3D;&#x3D;’(‘&#x3D;&#x3D; 时，直接扔进符号栈就好了</p>
-<h3 id="b-是’-’"><a href="#b-是’-’" class="headerlink" title="*b. 是’)’"></a>*b. 是’)’</h3><p>当当先遍历到的符号字符为 &#x3D;&#x3D;’)’&#x3D;&#x3D; 时</p>
+<p>==<strong>但怎么知道有数字要入栈呢？</strong>==</p>
+<p>可以定义一个用来判断要不要将变量$num$入栈的$bool$变量：==$flag$==，在<code>num *= 10</code>的时候将$flag$设为$true$，在入栈后将$flag$设为$false$。这样一来，在到达符号字符时通过判断$flag$的值就可以知道该不该入栈了</p>
+<h3 id="2-符号字符怎么办"><a href="#2-符号字符怎么办" class="headerlink" title="*2 符号字符怎么办"></a>*2 符号字符怎么办</h3><h4 id="a-是’-‘"><a href="#a-是’-‘" class="headerlink" title="*a. 是’(‘"></a>*a. 是’(‘</h4><p>当先遍历到的符号字符为 ==’(‘== 时，直接扔进符号栈就好了</p>
+<h3 id="b-是’-’"><a href="#b-是’-’" class="headerlink" title="*b. 是’)’"></a>*b. 是’)’</h3><p>当当先遍历到的符号字符为 ==’)’== 时</p>
 <p>因为<strong>括号里的运算等级更高</strong>，所以我们需要在遇到 ‘)’ 时马上计算括号内内容，只要没有到达 <strong>‘(‘</strong> 就一直计算，这个时候就体现出把 ‘(‘ push到符号栈里的作用了，<strong>用来计算括号内内容</strong></p>
 <p><strong>但怎么计算</strong></p>
 <p>这个题目在这一步还是比较友善，因为所有的运算都需要<strong>两个数参与</strong></p>
 <p>所以我们可以先取到数字栈栈顶的两个数和符号栈栈顶的符号进行运算，运算过程直接判断符号运算就好</p>
-<p>如何取栈顶示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int b = number.top(); // 取栈顶</span><br><span class="line">number.pop(); // 出栈顶，这里出栈顶正好对应了我们要实现的计算完成后弹出符号/数字</span><br></pre></td></tr></table></figure>
+<p>如何取栈顶示例：<br><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">int b = <span class="hljs-built_in">number</span>.<span class="hljs-built_in">top</span>(); <span class="hljs-comment">// 取栈顶</span><br><span class="hljs-built_in">number</span>.<span class="hljs-built_in">pop</span>(); <span class="hljs-comment">// 出栈顶，这里出栈顶正好对应了我们要实现的计算完成后弹出符号/数字</span><br></code></pre></td></tr></table></figure></p>
 <hr>
 <p><strong><u>因为计算需要反复使用，所以建议打包成函数方便以后使用</u></strong></p>
 <hr>
@@ -247,141 +331,370 @@
 <p><strong>stack: <u>first in last out, last in, first out</u></strong></p>
 <p><strong>Tip2:</strong><br><strong>计算完括号内内容需要将符号栈栈顶出栈，因为此时的栈顶是 ‘(‘ ，如果留着会出大问题……</strong></p>
 <hr>
-<h3 id="c-理清逻辑"><a href="#c-理清逻辑" class="headerlink" title="c. 理清逻辑"></a><em>c. 理清逻辑</em></h3><p>不要觉得普通是普通符号字符就可以直接进入符号栈</p>
-<pre><code>
-因为我们的数学还有优先级概念，所以我们需要先把优先级比当前符号字符高的符号计算完才能让它入栈
-
-## 这里就到了茶叶坐牢的点！
-
-首先我们需要知道**当前符号字符的优先级**和**栈顶符号的优先级**
-
-我们根据尝试定下如下规则：
-
-**BEST level**: 优先级为 $30$ 为最高级，是 ^(阶乘)
-
-**MIDDLE level**: 优先级为 $20$ 为中间级，是 $*$ 和 $/$
-
-**WORST level**: 优先级为 $10$ 为最拉级，是 $+$ 和 $-$
-
-现在就可以通过战力值(优先级)来评定谁强谁拉了
-
-**因为要重复使用，建议定义为一个函数**
-
-**怎么真正实施计算呢？**
-
-~~直接调用已经写好的计算函数啊！~~
-
-计算战力值比当前符号字符高的强者拢共分三↑步
-
-#### *① 比较优先级*
-
-只要调用写好的函数就可以获得符号栈栈顶符号的优先级与当前符号字符的优先级，获得之后作比较就好力
-
-****
-
-**Tip:**
-**记得用$while$，因为可能不止一个符号的优先级比当前符号的高**
-
-****
-
-#### *② 预防 $return$ $value$ $3221225477$ *
-因为我们的计算函数中绝对会使用`栈名.pop()`，所以必须在外围的$while$循环中加入条件：`!symbol.empty()`
-
-巧妙的是数字栈并不用担心这一点，因为从题意就可以得出**数字的个数绝对比符号的个数多，所以只要符号还有东西就一定有数字参加运算给你`pop`**
-
-并且不用担心如果全是括号那数字不就比符号少了，因为我们前面已经筛掉了是括号的可能
-
-### *d. 结束*
-
-因为可能有些刁钻的测试样例会在所有运算结束后留下数字
-
-所以需要在最后判断一下$flag$变量，如果$flag$变量为$true$，说明还有数残留，所以要把$num$入栈数字栈
-
-因为刚刚可能有数字残留，但数字是要用来计算的，计算又是成双成对的，所以我们需要重新计算一下，但是并没有上面那么复杂，只要`while(!symbol.empty())`就好了，如果达成条件就调用计算函数就好了
-
-最后输出`number.top()`，因为计算函数会将计算的值入栈数字栈，所以在最结尾时，`number.top()`就是结果
-
-# 总结
-# 自己理清思路后把所有写上就能AC
-</code></pre>
-
-        
-      </div>
-
-         
-    </div>
-    
-     
-  </div>
+<h3 id="c-理清逻辑"><a href="#c-理清逻辑" class="headerlink" title="c. 理清逻辑"></a><em>c. 理清逻辑</em></h3><p>不要觉得普通是普通符号字符就可以直接进入符号栈<br>```</p>
+<p>因为我们的数学还有优先级概念，所以我们需要先把优先级比当前符号字符高的符号计算完才能让它入栈</p>
+<h2 id="这里就到了茶叶坐牢的点！"><a href="#这里就到了茶叶坐牢的点！" class="headerlink" title="这里就到了茶叶坐牢的点！"></a>这里就到了茶叶坐牢的点！</h2><p>首先我们需要知道<strong>当前符号字符的优先级</strong>和<strong>栈顶符号的优先级</strong></p>
+<p>我们根据尝试定下如下规则：</p>
+<p><strong>BEST level</strong>: 优先级为 $30$ 为最高级，是 ^(阶乘)</p>
+<p><strong>MIDDLE level</strong>: 优先级为 $20$ 为中间级，是 $*$ 和 $/$</p>
+<p><strong>WORST level</strong>: 优先级为 $10$ 为最拉级，是 $+$ 和 $-$</p>
+<p>现在就可以通过战力值(优先级)来评定谁强谁拉了</p>
+<p><strong>因为要重复使用，建议定义为一个函数</strong></p>
+<p><strong>怎么真正实施计算呢？</strong></p>
+<p><del>直接调用已经写好的计算函数啊！</del></p>
+<p>计算战力值比当前符号字符高的强者拢共分三↑步</p>
+<h4 id="①-比较优先级"><a href="#①-比较优先级" class="headerlink" title="① 比较优先级"></a><em>① 比较优先级</em></h4><p>只要调用写好的函数就可以获得符号栈栈顶符号的优先级与当前符号字符的优先级，获得之后作比较就好力</p>
+<hr>
+<p><strong>Tip:</strong><br><strong>记得用$while$，因为可能不止一个符号的优先级比当前符号的高</strong></p>
+<hr>
+<h4 id="②-预防-return-value-3221225477"><a href="#②-预防-return-value-3221225477" class="headerlink" title="② 预防 $return$ $value$ $3221225477$ "></a><em>② 预防 $return$ $value$ $3221225477$ </em></h4><p>因为我们的计算函数中绝对会使用<code>栈名.pop()</code>，所以必须在外围的$while$循环中加入条件：<code>!symbol.empty()</code></p>
+<p>巧妙的是数字栈并不用担心这一点，因为从题意就可以得出<strong>数字的个数绝对比符号的个数多，所以只要符号还有东西就一定有数字参加运算给你<code>pop</code></strong></p>
+<p>并且不用担心如果全是括号那数字不就比符号少了，因为我们前面已经筛掉了是括号的可能</p>
+<h3 id="d-结束"><a href="#d-结束" class="headerlink" title="d. 结束"></a><em>d. 结束</em></h3><p>因为可能有些刁钻的测试样例会在所有运算结束后留下数字</p>
+<p>所以需要在最后判断一下$flag$变量，如果$flag$变量为$true$，说明还有数残留，所以要把$num$入栈数字栈</p>
+<p>因为刚刚可能有数字残留，但数字是要用来计算的，计算又是成双成对的，所以我们需要重新计算一下，但是并没有上面那么复杂，只要<code>while(!symbol.empty())</code>就好了，如果达成条件就调用计算函数就好了</p>
+<p>最后输出<code>number.top()</code>，因为计算函数会将计算的值入栈数字栈，所以在最结尾时，<code>number.top()</code>就是结果</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h1 id="自己理清思路后把所有写上就能AC"><a href="#自己理清思路后把所有写上就能AC" class="headerlink" title="自己理清思路后把所有写上就能AC"></a>自己理清思路后把所有写上就能AC</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-    
-<nav id="article-nav">
-  <a class="article-nav-btn left "
-    
-      href="/2025/01/22/%E9%A2%98%E8%A7%A3%EF%BC%9AP1087%20%5BNOIP2004%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20FBI%20%E6%A0%91/"
-      title="题解：P1087 [NOIP2004 普及组] FBI 树"
-     >
-    <i class="fa-solid fa-angle-left"></i>
-    <p class="title-text">
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-        题解：P1087 [NOIP2004 普及组] FBI 树
-        
-    </p>
-  </a>
-  <a class="article-nav-btn right  disabled "
-     >
-
-    <p class="title-text">
-        
-    </p>
-    <i class="fa-solid fa-angle-right"></i>
-  </a>
-</nav>
-
-
-  
-</article>
-
-
-
-
-
+        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
+      
     </div>
-    <div id="footer-wrapper">
-      <footer id="footer">
   
-  <div id="footer-info" class="inner">
-    
-    &copy; 2026 茶叶<br>
-    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
-  </div>
-</footer>
-
-    </div>
-    <div class="back-to-top-wrapper">
-    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
-        <i class="fa-solid fa-angle-up"></i>
-    </button>
 </div>
 
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>题解：一本通1356 calc</div>
+      <div>https://chaye0108.github.io/2024/12/23/题解：一本通1356 calc/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>茶叶 ChaYe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年12月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/22/%E9%A2%98%E8%A7%A3%EF%BC%9AP1087%20%5BNOIP2004%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20FBI%20%E6%A0%91/" title="题解：P1087 [NOIP2004 普及组] FBI 树">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">题解：P1087 [NOIP2004 普及组] FBI 树</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
 <script>
-    function topFunction() {
-        window.scroll({ top: 0, behavior: 'smooth' });
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
     }
-    let btn = document.getElementById('back-to-top-btn');
-    function scrollFunction() {
-        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-            btn.classList.remove('hide')
-        } else {
-            btn.classList.add('hide')
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
         }
-    }
-    window.onscroll = function() {
-        scrollFunction();
-    }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
 </script>
 
-  </div>
-  <script src="/js/light-dark-switch.js"></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
