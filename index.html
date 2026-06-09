@@ -168,7 +168,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2026/06/08/%E3%80%90C++%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E6%9D%BF/">【C++】一些数据结构模板</a>
+        <a class="p-name article-title" href="/2026/06/08/%E3%80%90C++%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E6%9D%BF/">【C++】一些模板</a>
       </h1>
     
   
@@ -198,8 +198,8 @@
         
           <div class="truncate-text">
             
-              并查集模板题链接：P3367 【模板】并查集
-12345678910111213141516171819202122232425262728293031323334353637383940414243#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 2 * 1e6 + 10;int n, m, type, x, y, fa[N];int find(int x)&#123;	if (x == fa[x])		return x;	else		return fa[x] = find(fa[x]); // 路径压缩//		return find(fa[x]);         // 没路径压缩&#125;void uio(int x, int y)&#123;	int fx = find(x), fy = find(y);	if (fx != fy)		fa[fy] = fx;	return ;&#125;int main()&#123;	cin &gt;&gt; n &gt;&gt; m;	for (int ...
+              数据结构并查集模板题链接：P3367 【模板】并查集
+12345678910111213141516171819202122232425262728293031323334353637383940414243#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 2 * 1e6 + 10;int n, m, type, x, y, fa[N];int find(int x)&#123;	if (x == fa[x])		return x;	else		return fa[x] = find(fa[x]); // 🦌径🦆缩//		return find(fa[x]);         // 没🦌径🦆缩&#125;void uio(int x, int y)&#123;	int fx = find(x), fy = find(y);	if (fx != fy)		fa[fy] = fx;	return ;&#125;int main()&#123;	cin &gt;&gt; n &gt;&gt; m;	f...
             
           </div>
         
@@ -840,7 +840,7 @@ orz%%%
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.5k 词 
+            2.4k 词 
           </div>
         </div>
         
@@ -864,7 +864,8 @@ orz%%%
 最后到了考点一进去就见到了学弟（米奥儿子果  @milsonguo），于是乎学弟和我一起勇闯考点爬了 7 楼结果走错楼了。
 只好爬下来又坐电梯到考场，当时还在排队进入考场。
 排队的时候就遇到了 【溜开蚊 @C24liukaiwen】 【czb @czb3262】 【Lancas @Lancas0412】 还有 2 ~ 3 个忘了名字的学弟，求原谅。
-进机房考点就直接见到了同考点的超级大犇——【nPr @nPrpppf】和【ppfrog&#x2F;匹皮服扰各 @purplefrog】，先 %...
+进机房考点就直接见到了同考点的超级大犇——【nPr @nPrpppf】和【ppfrog/匹皮服扰各 @purplefrog】，先 % 为敬
+溜...
             
           </div>
         
@@ -938,14 +939,14 @@ orz%%%
             
               前言本文主要讲解 BFS 是什么，以及最最最简单的模板题的题解。不讲非模板题，因为我不会。
 想要让自己变成脑雾的了解 BFS 官方解释的可以去阅读 OIwiki 的 BFS 讲解
-1 模板介绍BFS 思路：将有可能的情况（如在最短路题目中可以走的地点等）加入队列等待处理，在下一个 循环 &#x2F; 递归 中处理。
-适用于：求最短路的成本（距离&#x2F;时间&#x2F;花费）、找联通快
+1 模板介绍BFS 思路：将有可能的情况（如在最短路题目中可以走的地点等）加入队列等待处理，在下一个 循环 / 递归 中处理。
+适用于：求最短路的成本（距离/时间/花费）、找联通快
 Q：为什么用队列？
 A：队列先进先出，所以当你第一次到达终点的时候就肯定是最短的路线，可以用来找最短路。
 2 最短路个人认为最短路是 BFS 最常考的考法，可能是因为我做的少罢。
 2.1 一维最短路一维最短路例题 P1135 奇怪的电梯。
 思路：BFS 暴如力，将可以到达的层数加入队列 q，当当前层数是目标层数时，就找到了到达目标层数的最短路，这时候输出 top.step（目前的步数）就是正确答案。因为队列先进先出，所以当你第一次到达终点（目标层数）的时候就肯定是最短的路线。
-如果把所有能去的层数都去了（q.size() == 0）还没到，那就到不了力！（悲）所以我们在到达的时候就把拿来判断是否...
+如果把所有能去的层数都去了（q.size() == 0）还没到，那就到不了力！（悲）所以我们在到达的时候就把拿来判断是否达到过的 bool 变量 $a...
             
           </div>
         
